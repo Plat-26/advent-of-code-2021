@@ -76,4 +76,71 @@ public class PuzzleUtil {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public static List<String> getSevenSegmentDigits(String filename) {
+        File file = new File(filename);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader(file)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        List<String> digits = new ArrayList<>();
+        while(scanner.hasNextLine()) {
+            String input = scanner.nextLine().trim();
+            String[] split = input.split("\\| ");
+
+            String[] output = split[1].split(" ");
+            Collections.addAll(digits, output);
+        }
+
+        return digits;
+    }
+
+    /**
+     * For day 8: method  to get a list of output values per entry.
+     * @param filename
+     * @return
+     */
+    public static List<String[]> getSegmentOutputValues(String filename) {
+        File file = new File(filename);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader(file)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        List<String[]> digits = new ArrayList<>();
+        while(scanner.hasNextLine()) {
+            String input = scanner.nextLine().trim();
+            String[] split = input.split("\\| ");
+
+            String[] output = split[1].split(" ");
+            digits.add(output);
+        }
+
+        return digits;
+    }
+
+    public static List<String[]> getSegments(String filename) {
+        File file = new File(filename);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new BufferedReader(new FileReader(file)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        List<String[]> digits = new ArrayList<>();
+        while(scanner.hasNextLine()) {
+            String input = scanner.nextLine().trim();
+            String[] split = input.split("\\| ");
+
+            digits.add(split);
+        }
+
+        return digits;
+    }
 }
